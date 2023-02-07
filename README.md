@@ -20,3 +20,15 @@ Running the application
 ```
 yarn start
 ```
+
+# USER API
+Calling the user API:
+```
+http://localhost:3000/users/1
+```
+
+# Swagger
+Accessing the Swagger editor:
+```
+http://localhost:3000/api#/
+```
