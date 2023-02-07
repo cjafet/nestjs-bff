@@ -21,7 +21,7 @@ Running the application
 yarn start
 ```
 
-# USER API
+# User API
 Calling the user API:
 ```
 http://localhost:3000/users/1
