@@ -7,10 +7,10 @@ export class AuthenticationService {
   constructor() {}
 
   validateUserHeader(req: any) {
-    console.log('Authorization', req.headers['authorization']);
+    console.log('Authorization', req.headers['Authorization']);
     if (
-      req.headers['authorization'] != null ||
-      req.headers['authorization'] != undefined
+      req.headers['Authorization'] != null ||
+      req.headers['Authorization'] != undefined
     ) {
       const token = req.headers.authorization.slice(7);
       const payload = jwtDecode(token);

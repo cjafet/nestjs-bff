@@ -10,11 +10,16 @@ export class AuthenticationMiddleware implements NestMiddleware {
 
   use(req: Request, res: Response, next: NextFunction) {
     console.log('Request', req.method, req.headers['host']);
-    console.log(this.authenticationService.validateUserHeader(req));
     if (!this.authenticationService.validateUserHeader(req)) {
       return res
         .status(HttpStatus.BAD_REQUEST)
-        .json({ error: 'Unable to authenticate the user. Missing the Authorization header.'});
+        .json({ error: [{
+            status: "400",
+            title: "Unable to authenticate the user.",
+            source: req['protocol'] + "://" + req.headers['host'] + req['path'],
+            detail: "Missing the Authorization header."
+        }]
+      });
     }
     return next();
   }
