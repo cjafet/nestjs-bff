@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { HttpStatus, Injectable, NestMiddleware } from '@nestjs/common';
 import { Response, NextFunction } from 'express';
 import { AuthenticationService } from 'src/modules/authentication/authentication.service';
@@ -13,7 +14,7 @@ export class AuthenticationMiddleware implements NestMiddleware {
     if (!this.authenticationService.validateUserHeader(req)) {
       return res
         .status(HttpStatus.BAD_REQUEST)
-        .send('Unable to authenticate the user.');
+        .json({ error: 'Unable to authenticate the user. Missing the Authorization header.'});
     }
     return next();
   }
